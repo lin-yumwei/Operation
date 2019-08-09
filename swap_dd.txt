@@ -1,0 +1,17 @@
+vps_id
+
+#设置swap空间与挂载
+dd if=/dev/sda2 of=/vps bs=1M count=2048
+#count按需求设置,if 截取空间的逻辑卷,of 存放swap地方
+mkswap /vps	#格式化swap空间
+chmod 0600 /vps	#设置安全权限
+swapon /vps	#启用swap空间
+free -h		#查看swap存在
+
+#开机自启swap空间
+1.echo "/vps swap swap defaults 0 0" >> /etc/fstab
+2.echo "swapon /vps" >> /vps
+
+
+##卸载swap空间
+swapoff /vps && rm -f /vps

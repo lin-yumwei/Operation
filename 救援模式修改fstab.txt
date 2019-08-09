@@ -1,0 +1,8 @@
+##救援模式进入修改fstab过程##
+
+在开机界面进入,按e进入救援模式
+查找修改到linux16 > ro > rw init=/sysroot/bin/sh,按Ctrl+x 进入救援模式
+	chroot /sysroot
+	mount -o rw,remount /
+	vi /etc/fstab
+	reboot
